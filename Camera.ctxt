@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=Camera
+comment1.params=sizeX\ sizeY
+comment1.target=Camera(int,\ int)
+comment2.params=e
+comment2.target=void\ centerOnEntity(Creature)
+comment2.text=\r\n\ Verschiebung\ der\ Kamera,\ sodass\ die\ Figur\ immer\ in\ der\ Mitte\ ist\r\n
+comment3.params=
+comment3.target=int\ getxOffset()
+comment4.params=
+comment4.target=int\ getyOffset()
+numComments=5

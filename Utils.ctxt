@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=Utils
+comment1.params=number
+comment1.target=int\ parseInt(java.lang.String)
+comment1.text=\r\n\ Wandelt\ einen\ String\ in\ einen\ Integer\ um.\r\n
+comment2.params=path
+comment2.target=java.lang.String\ loadFileAsString(java.lang.String)
+comment2.text=\r\n\ Wandelt\ ein\ Dokument\ in\ einen\ String\ um\r\n
+comment3.params=touched
+comment3.target=boolean\ containsBlock(int[][])
+comment3.text=\r\n\ Wichtig\ f\u00FCr\ die\ Kollision,\ da\ hier\ abgefragt\ wird\ ob\ ein\ Feld\ den\ Weg\ blockiert.\r\n
+numComments=4

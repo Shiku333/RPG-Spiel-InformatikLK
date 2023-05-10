@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=Player
+comment1.params=game\ level\ x\ y\ keyManager
+comment1.target=Player(Game,\ Level,\ int,\ int,\ KeyManager)
+comment2.params=
+comment2.target=java.awt.Point\ getInput()
+comment2.text=\r\n\ Abfrage\ des\ Inputs\r\n
+comment3.params=
+comment3.target=void\ update()
+comment3.text=\r\n\ Aktualisiert\ die\ Spielfigur\ nach\ den\ gedr\u00FCckten\ Tasten\r\n
+comment4.params=g
+comment4.target=void\ render(java.awt.Graphics)
+comment4.text=\r\n\ Zeichnen\ der\ Spielfigur\r\n
+numComments=5

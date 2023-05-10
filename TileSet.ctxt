@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=TileSet
+comment1.params=path\ sizeX\ sizeY\ border\ TILEWIDTH\ TILEHEIGHT\ hs
+comment1.target=TileSet(java.lang.String,\ int,\ int,\ int,\ int,\ int,\ java.util.HashSet)
+comment1.text=\r\n\ Laden\ des\ TileSets\r\n
+comment2.params=g\ tileNum\ x\ y
+comment2.target=void\ renderTile(java.awt.Graphics,\ int,\ int,\ int)
+comment2.text=\r\n\ Zeichnen\ der\ einzelnen\ Tiles\ \r\n
+numComments=3
