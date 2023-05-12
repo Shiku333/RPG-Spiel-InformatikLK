@@ -6,6 +6,11 @@ import java.awt.image.BufferStrategy;
 import java.util.Arrays;
 import java.util.HashSet;
 
+/** 
+ * Version: 1.0
+ * Author: Tim, Johan, Vinzenz
+ * Quelle: https://quizdroid.wordpress.com
+ */
 public class Game implements Runnable {
     public static final int FPS = 60;//Geschwindigkeit des Spiels
     public static final long maxLoopTime = 1000 / FPS;//Zeit eines Game Loops
@@ -39,7 +44,10 @@ public class Game implements Runnable {
     }
 
     /**
-     * Der Gameloop
+     * Gameloop: In ihm wird die Zeit vor dem render/update und der Zeit danach überprüft, ob die maxLoopTime 
+     * erreicht wurde oder nicht. Falls ja dann wird der loop beendet und ein neuer gestartet, falls nicht geht er 
+     * bei update efinach weiter, aber bei render wird der Game-Loop so lange schlafen gelegt bis die maxLoopTime
+     * erreicht ist.
      */
     @Override
     public void run() {
@@ -95,7 +103,7 @@ public class Game implements Runnable {
     }
 
     /**
-     * Lässt den User mit dem Spiel Interagieren
+     * Berechnung der Spielmechanik und lässt den User mit dem Spiel Interagieren
      */
     void update() {
         keyManager.update();//Registrierung eines Tastendruckes
@@ -103,13 +111,13 @@ public class Game implements Runnable {
     }
 
     /**
-     * Zeichnen der Veränderung
+     * Anzeigen des Spielfeldes und allen sich darauf befindlichen Obejkten und Zeichnen der Veränderung
      */
     void render() {
         Canvas c = screen.getCanvas();
-        bs = c.getBufferStrategy();
+        bs = c.getBufferStrategy(); 
         if(bs == null){
-            screen.getCanvas().createBufferStrategy(3);
+            screen.getCanvas().createBufferStrategy(3); //3 Zwischenspeicher für höhere effizienz
             return;
         }
         g = bs.getDrawGraphics();
@@ -122,6 +130,9 @@ public class Game implements Runnable {
         g.dispose();
     }
 
+    /**
+     * get-Methode für die Spiel Kamera
+     */
     public Camera getGameCamera(){
         return gameCamera;
     }

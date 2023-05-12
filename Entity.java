@@ -2,7 +2,16 @@
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
+/** 
+ * Version: 1.0
+ * Author: Tim, Vinzenz
+ * Quelle: https://quizdroid.wordpress.com
+ */
 public abstract class Entity {
+    /**
+     * Die gesamte Klasse dient nur als spezifikation, da bestimmte Eigenschaften bei allen Objekten auf dem 
+     * Spielfeld gleich sind. Die Spezialisierungen werden dann in Form von Subklassen dargestellt.
+     */
     public static final int DEFAULT_WIDTH = 48;//TILESIZE
     public static final int DEFAULT_HEIGHT = 48;//TILESIZE
 
@@ -12,7 +21,7 @@ public abstract class Entity {
     protected int width;
     protected int height;
     protected BufferedImage image;
-
+    
     public Entity(String name, BufferedImage image, int x, int y, int width, int height) {
         this.name = name;
         this.image = image;
@@ -27,7 +36,11 @@ public abstract class Entity {
     protected void render(Graphics g) {
         g.drawImage(image, entityX, entityY, null);
     }
-
+    
+    /**
+     * Alle getter-und setter Methoden  
+    */
+   
     protected void setEntityImage(BufferedImage image) {
         this.image = image;
     }

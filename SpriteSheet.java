@@ -1,14 +1,22 @@
-
+/** 
+ * Version: 1.0
+ * Author: Tim, Johan
+ * Quelle: https://quizdroid.wordpress.com
+ */
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class SpriteSheet {
+    /**
+     *  In der Klasse wird ein Spritesheet-Bild eingelesen und in ein zwei-dimensionales Array gespeichert.
+     */
     private BufferedImage sheet;
     private BufferedImage[][] sprite;
 
     public SpriteSheet(String path, int moves, int directions, int width, int height){
-        sprite = new BufferedImage[moves][directions];
+        sprite = new BufferedImage[moves][directions]; //Die Argumente "moves" und "directions" geben die Anzahl der
+        //Animations und Bewegungsrichungen im Spritsheet an
         try {
             sheet = ImageIO.read(Game.class.getResource(path));
         } catch (IOException e) {
@@ -22,6 +30,9 @@ public class SpriteSheet {
         }
     }
 
+    /**
+     * Methode um das Sprite Sheet abzurufen
+     */
     public BufferedImage getSpriteElement(int x, int y) {
         return sprite[x][y];
     }

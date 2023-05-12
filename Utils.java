@@ -1,4 +1,8 @@
-
+/** 
+ * Version: 1.0
+ * Author: Johan, Vinzenz
+ * Quelle: https://quizdroid.wordpress.com
+ */
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -6,7 +10,7 @@ import java.io.IOException;
 
 public class Utils {
     /**
-     * Wandelt einen String in einen Integer um.
+     * Wandelt einen String in einen Integer um, da die Arrays  Integer Werte benötigen um benutzt zu werden
      */
     public static int parseInt(String number){
         try {
@@ -22,7 +26,6 @@ public class Utils {
      */
     public static String loadFileAsString(String path){
         StringBuilder builder = new StringBuilder();
-
         //Get file from resources folder
         FileReader file = null;
         try {
@@ -44,7 +47,7 @@ public class Utils {
         }
         return builder.toString();
     }
-    
+
     /**
      * Wichtig für die Kollision, da hier abgefragt wird ob ein Feld den Weg blockiert.
      */

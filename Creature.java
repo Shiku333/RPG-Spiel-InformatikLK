@@ -1,8 +1,16 @@
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-
+/** 
+ * Version: 1.0
+ * Author: Tim, Johan
+ * Quelle: https://quizdroid.wordpress.com
+ */
 public abstract class Creature {
+    /**
+     * Sich bewegende Objekte auf dem Spielfeld, die bestimte Gemeinsamkeiten haben. Die Entity Klasse beschreibt
+     * alles, was sich auf dem Spielfeld bewegt.
+     */
     protected int health;
     protected int speed;
     protected int xMove, yMove;
@@ -20,6 +28,7 @@ public abstract class Creature {
     protected int height;
     protected BufferedImage image;
 
+    
     public Creature(String name, Level level, SpriteSheet spriteSheet, int x, int y, int width, int height, int health, int speed) {
         this.name = name;
         this.image = image;
@@ -29,7 +38,7 @@ public abstract class Creature {
         this.height = height;
 
         this.level = level;
-        this.spriteSheet = spriteSheet;
+        this.spriteSheet = spriteSheet; //die Creature Klasse benötigt das gesamte SpriteSheet für die move Methode
         this.health = health;
         this.speed = speed;
         xMove = 0;
@@ -111,7 +120,11 @@ public abstract class Creature {
         }
         setEntityImage(image);
     }
-
+    
+    /**
+     * Getter-und Setter Methoden
+     */
+    
     /**
      * Das Bewegen der Kreatur zu einem bestimmten Punkt
      */
@@ -120,6 +133,7 @@ public abstract class Creature {
         yMove = p.y;
     }
 
+    
     public int getEntityX() {
         return entityXPos;
     }

@@ -1,4 +1,8 @@
-
+/** 
+ * Version: 1.0
+ * Author: Johan, Vinzenz
+ * Quelle: https://quizdroid.wordpress.com
+ */
 import java.awt.Graphics;
 public class Level {
     private TileSet[] ts;
@@ -61,8 +65,8 @@ public class Level {
     }
 
     /**
-     * Laden der Gesammten Map
-     */
+     * Laden der Gesammten Map, auch unter berücksichtigung des errechneten Offsets der Kamera Klasse
+    */
     public void renderMap(Graphics g){
         for(int tileY = 0; tileY < sizeY; tileY++){
             for(int tileX = 0; tileX < sizeX; tileX++){

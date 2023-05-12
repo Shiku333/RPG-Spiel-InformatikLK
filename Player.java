@@ -1,4 +1,8 @@
-
+/** 
+ * Version: 1.0
+ * Author: Tim, Vinzenz
+ * Quelle: https://quizdroid.wordpress.com
+ */
 import java.awt.*;
 public class Player extends Creature {
     public static final int MARGIN_HORIZ = 5;
@@ -17,7 +21,7 @@ public class Player extends Creature {
     }
 
     /**
-     * Abfrage des Inputs
+     * Abfrage des Inputs, um zu überprüfen in welche Richtung der Spieler gehen muss
      */
     private Point getInput(){
         int xMove = 0;
@@ -34,7 +38,8 @@ public class Player extends Creature {
     }
 
     /**
-     * Aktualisiert die Spielfigur nach den gedrückten Tasten
+     * Aktualisiert die Spielfigur nach den gedrückten Tasten und zentriert die Kamera nach jeder Bewegung
+     * auf die Spielfigur 
      */
     @Override
     public void update() {

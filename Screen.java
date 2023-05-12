@@ -1,9 +1,16 @@
-
+/** 
+ * Version: 1.0
+ * Author: Johan, Vinzenz
+ * Quelle: https://quizdroid.wordpress.com
+ */
 import java.awt.Canvas;
 import java.awt.Dimension;
 import javax.swing.JFrame;
 
 public class Screen {
+    /**
+     * Darstellung des Spielfeldes 
+     */
 
     private JFrame frame;
     private Canvas canvas;
