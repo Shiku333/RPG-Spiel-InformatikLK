@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
  * Author: Tim, Johan
  * Quelle: https://quizdroid.wordpress.com
  */
-public abstract class Creature {
+public abstract class Creature  {
     /**
      * Sich bewegende Objekte auf dem Spielfeld, die bestimte Gemeinsamkeiten haben. Die Entity Klasse beschreibt
      * alles, was sich auf dem Spielfeld bewegt.

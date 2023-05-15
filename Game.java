@@ -28,6 +28,8 @@ public class Game implements Runnable {
 
     public Screen screen;//Das Bildschirmobjekt
     Player player;//Das Spielerobjekt
+    Enemy enemy1; //Das Gegnerobjekt
+    
 
     Level level;//Das Levelobjekt
     KeyManager keyManager;//Steuerung
@@ -80,6 +82,7 @@ public class Game implements Runnable {
 
         //Spielfigur und Level werden initialisiert
         player = new Player(this, level, 100, 100, keyManager);
+        enemy1 = new Skeleton(this, level, 50, 50);
         gameCamera = new Camera(level.getSizeX(), level.getSizeY());
         while(true) {//läuft immer weiter
             oldTimestamp = System.currentTimeMillis();//Zeit vor der Interaktion
@@ -108,6 +111,7 @@ public class Game implements Runnable {
     void update() {
         keyManager.update();//Registrierung eines Tastendruckes
         player.update();//Veränderung der Spielfigur
+        enemy1.update(); 
     }
 
     /**
@@ -125,6 +129,7 @@ public class Game implements Runnable {
         g.clearRect(0, 0, screenWidth, screenHeight);
         level.render(g);//Hintergrund
         player.render(g);
+        enemy1.render(g);
         level.renderZ(g);//Vordergrund
         bs.show();
         g.dispose();
@@ -135,5 +140,10 @@ public class Game implements Runnable {
      */
     public Camera getGameCamera(){
         return gameCamera;
+    }
+    
+    public Player getPlayer()
+    {
+        return player;
     }
 }
