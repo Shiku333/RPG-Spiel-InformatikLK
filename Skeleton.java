@@ -15,7 +15,7 @@ public class Skeleton extends Enemy {
 
     public Skeleton(Game game, Level level, int x, int y) {
 
-        super("Skeleton", game, level, new SpriteSheet("/res/sprites/player.png", 3 /*moves*/, 4 /*directions*/, 16/*width*/, 16 /*height*/), x, y, 48, 48, DEFAULT_HEALTH, DEFAULT_SPEED);
+        super("Skeleton", game, level, new SpriteSheet("/res/sprites/enemy.png", 3 /*moves*/, 4 /*directions*/, 16/*width*/, 16 /*height*/), x, y, 48, 48, DEFAULT_HEALTH, DEFAULT_SPEED);
         this.game = game;
     }
 
