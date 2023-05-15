@@ -9,16 +9,14 @@ public class Skeleton extends Enemy {
     public static final int MARGIN_HORIZ = 5;
     public static final int MARGIN_VERT = 1;
     public static final int DEFAULT_HEALTH = 100;
-    public static final int DEFAULT_SPEED = 3;
+    public static final int DEFAULT_SPEED = 1;
     private Game game;
-    
-    private KeyManager keyManager;
+
 
     public Skeleton(Game game, Level level, int x, int y) {
 
-        super(game, level,x , y);
+        super("Skeleton", game, level, new SpriteSheet("/res/sprites/player.png", 3 /*moves*/, 4 /*directions*/, 16/*width*/, 16 /*height*/), x, y, 48, 48, DEFAULT_HEALTH, DEFAULT_SPEED);
         this.game = game;
-        this.keyManager = keyManager;
     }
 
     /**
@@ -28,7 +26,9 @@ public class Skeleton extends Enemy {
     @Override
     public void update() {
         move();
+        walkToPlayer();
     }
+    
 
     /**
      * Zeichnen der Spielfigur

@@ -110,8 +110,9 @@ public class Game implements Runnable {
      */
     void update() {
         keyManager.update();//Registrierung eines Tastendruckes
-        player.update();//Veränderung der Spielfigur
         enemy1.update(); 
+        player.update();//Veränderung der Spielfigur
+        
     }
 
     /**

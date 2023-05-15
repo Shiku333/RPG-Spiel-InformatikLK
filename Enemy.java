@@ -4,20 +4,18 @@
  * Quelle: Johabns
  */
 import java.awt.*;
-public class Enemy extends Creature {
+public abstract class Enemy extends Creature {
     public static final int MARGIN_HORIZ = 5;
     public static final int MARGIN_VERT = 1;
     public static final int DEFAULT_HEALTH = 100;
     public static final int DEFAULT_SPEED = 3;
     private Game game;
     private Player player;
-    private KeyManager keyManager;
 
-    public Enemy(Game game, Level level, int x, int y) {
+    public Enemy(String name, Game game, Level level,SpriteSheet spriteSheet, int x, int y, int width, int height, int health, int speed) {
 
-        super("Player", level, new SpriteSheet("/res/sprites/player.png", 3 /*moves*/, 4 /*directions*/, 16/*width*/, 16 /*height*/), x, y, Entity.DEFAULT_WIDTH, Entity.DEFAULT_HEIGHT, Player.DEFAULT_HEALTH, Player.DEFAULT_SPEED);
+        super(name, level, spriteSheet, x, y, width, height, health, speed);
         this.game = game;
-        this.keyManager = keyManager;
         this.player = player;
     }
 
@@ -28,16 +26,50 @@ public class Enemy extends Creature {
         
     }
     
+    
     /**
      * Aktualisiert die Spielfigur nach den gedrückten Tasten und zentriert die Kamera nach jeder Bewegung
      * auf die Spielfigur 
      */
-    @Override
-    public void update() {
-        move();
-        game.getGameCamera().centerOnEntity(this);
-    }
+    public abstract void update();
     
+    public void walkToPlayer()
+    {
+        int xPlayerPos = game.getPlayer().getEntityX();
+        int yPlayerPos = game.getPlayer().getEntityY();
+        
+        int xMove = 0;
+        int yMove = 0;
+        
+        if(getEntityX() > xPlayerPos)
+        {
+            xMove = -1;
+        }
+        else if(this.getEntityX() < xPlayerPos)
+        {
+            xMove = 1;
+        }
+        else
+        {
+            xMove = 0;
+        }
+        
+        if(getEntityY() > yPlayerPos)
+        {
+            yMove = -1;
+        }
+        else if(this.getEntityY() < yPlayerPos)
+        {
+            yMove = 1;
+        }
+        else
+        {
+            yMove = 0;
+        }
+        
+        
+        setMove(new Point(xMove, yMove)); 
+    }
     
 
     /**
