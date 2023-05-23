@@ -84,7 +84,7 @@ public abstract class Creature  {
         }
     }
 
-    protected abstract void update();
+    protected abstract boolean update();
 
     /**
      * Visualisierung der Kreatur

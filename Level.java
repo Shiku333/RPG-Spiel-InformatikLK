@@ -8,9 +8,10 @@ public class Level {
     private TileSet[] ts;
     private int sizeX, sizeY;
     private int[][][] tileMap;
+    private GameState gamestate;
     private Game game;
-
-    public Level(Game game, String[] path, TileSet[] ts) {
+    public Level(GameState gamestate, Game game, String[] path, TileSet[] ts) {
+        this.gamestate = gamestate;
         this.game = game;
         this.ts = ts;
         String[][] tokens = new String[ts.length][];
@@ -51,15 +52,15 @@ public class Level {
      * Berechnung der Kameraposition, damit am Levelrand die Kamera stehen bleibt
      */    
     private void r(Graphics g, int[][] tm, TileSet ts) {
-        int xStart = Math.max(0, game.getGameCamera().getxOffset() / TileSet.TILEWIDTH);
-        int xEnd = Math.min(sizeX, (game.getGameCamera().getxOffset() + Game.screenWidth) / TileSet.TILEWIDTH + 1);
-        int yStart = Math.max(0, game.getGameCamera().getyOffset() / TileSet.TILEHEIGHT);
-        int yEnd = Math.min(sizeY, (game.getGameCamera().getyOffset() + Game.screenHeight) / TileSet.TILEHEIGHT + 1);
+        int xStart = Math.max(0, gamestate.getgamestateCamera().getxOffset() / TileSet.TILEWIDTH);
+        int xEnd = Math.min(sizeX, (gamestate.getgamestateCamera().getxOffset() + game.screenWidth) / TileSet.TILEWIDTH + 1);
+        int yStart = Math.max(0, gamestate.getgamestateCamera().getyOffset() / TileSet.TILEHEIGHT);
+        int yEnd = Math.min(sizeY, (gamestate.getgamestateCamera().getyOffset() + game.screenHeight) / TileSet.TILEHEIGHT + 1);
         for(int tileY = yStart; tileY < yEnd; tileY++){
             for(int tileX = xStart; tileX < xEnd; tileX++){
                 if(tm[tileY][tileX] == -1) continue;
-                ts.renderTile(g, tm[tileY][tileX], tileX * TileSet.TILEWIDTH - game.getGameCamera().getxOffset(),
-                    tileY * TileSet.TILEHEIGHT - game.getGameCamera().getyOffset());
+                ts.renderTile(g, tm[tileY][tileX], tileX * TileSet.TILEWIDTH - gamestate.getgamestateCamera().getxOffset(),
+                    tileY * TileSet.TILEHEIGHT - gamestate.getgamestateCamera().getyOffset());
             }
         }
     }
@@ -70,8 +71,8 @@ public class Level {
     public void renderMap(Graphics g){
         for(int tileY = 0; tileY < sizeY; tileY++){
             for(int tileX = 0; tileX < sizeX; tileX++){
-                ts[0].renderTile(g, tileMap[0][tileX][tileY], tileX * TileSet.TILEWIDTH - game.getGameCamera().getxOffset(),
-                    tileY * TileSet.TILEHEIGHT - game.getGameCamera().getyOffset());
+                ts[0].renderTile(g, tileMap[0][tileX][tileY], tileX * TileSet.TILEWIDTH - gamestate.getgamestateCamera().getxOffset(),
+                    tileY * TileSet.TILEHEIGHT - gamestate.getgamestateCamera().getyOffset());
             }
         }
     }

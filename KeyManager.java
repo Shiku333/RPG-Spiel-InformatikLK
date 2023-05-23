@@ -9,14 +9,14 @@ import java.awt.event.KeyListener;
 public class KeyManager implements KeyListener {
 
     private boolean[] keys;
-    public boolean up, down, left, right, shift;
+    public boolean up, down, left, right, shift, escape, enter;
 
     public KeyManager(){
-        keys = new boolean[256];
+        keys = new boolean[520];
     }
 
     /**
-     * Registriert wenn eine Taste gedrückt wird
+     * Registriert wenn eine Taste gedrückt wird 
      */
     public void update(){
         up = keys[KeyEvent.VK_W];
@@ -24,6 +24,8 @@ public class KeyManager implements KeyListener {
         left = keys[KeyEvent.VK_A];
         right = keys[KeyEvent.VK_D];
         shift = keys[KeyEvent.VK_SHIFT];
+        escape = keys[KeyEvent.VK_ESCAPE];
+        enter = keys[KeyEvent.VK_ENTER];
     }
 
     /**

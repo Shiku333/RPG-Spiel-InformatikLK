@@ -37,6 +37,10 @@ public class Game implements Runnable {
     private Camera gameCamera;//Das Kameraobjekt
     BufferStrategy bs;
     Graphics g;
+    
+    //Die Verschiedenen States werden Gespeichert
+    State gameState;
+    State menuState;
     /**
      * Erstellt ein Neues Spiel und startet dieses
      */
@@ -60,30 +64,10 @@ public class Game implements Runnable {
         keyManager = new KeyManager();
         screen.getFrame().addKeyListener(keyManager);
 
-        //Die Dateien werden geladen
-        TileSet[] tileSet = new TileSet[3];
-        // Ground layer tileset with blocking tiles
-        HashSet hs = new HashSet(Arrays.asList(0, 1, 2, 3, 5, 6, 7, 8));
-        tileSet[0] = new TileSet("/res/tiles/rpg.png", 3 /*sizeX*/, 3/*sizeY*/, 0 /*border*/,pixelPerTile, pixelPerTile, hs);
-        // Second layer tileset with blocking tiles
-        hs = new HashSet(Arrays.asList(0, 1, 2));
-        tileSet[1] = new TileSet("/res/tiles/tileb.png", 3, 3, 0,pixelPerTile, pixelPerTile, hs);
-        // Transparent Z / foreground layer tileset, no blocking tiles
-        tileSet[2] = new TileSet("/res/tiles/tileb.png", 3, 3, 0,pixelPerTile, pixelPerTile, hs);
-
-        //Layering beginnt
-        String[] paths = new String[3];
-        paths[0] = "/res/level/level1.txt";
-        paths[1] = "/res/level/level1a.txt";
-        paths[2] = "/res/level/level1b.txt";
-
-        //Level wird initialisiert
-        level = new Level(this, paths, tileSet);
-
-        //Spielfigur und Level werden initialisiert
-        player = new Player(this, level, 100, 100, keyManager);
-        enemy1 = new Skeleton(this, level, 50, 50);
-        gameCamera = new Camera(level.getSizeX(), level.getSizeY());
+        //Die verschiedenen Zustände des Spiels wie z.B. Hauptmenue
+        gameState = new GameState(this);
+        menuState = new MenuState(this);
+        State.setState(menuState);
         while(true) {//läuft immer weiter
             oldTimestamp = System.currentTimeMillis();//Zeit vor der Interaktion
             update();//interaktion
@@ -109,10 +93,11 @@ public class Game implements Runnable {
      * Berechnung der Spielmechanik und lässt den User mit dem Spiel Interagieren
      */
     void update() {
-        keyManager.update();//Registrierung eines Tastendruckes
-        enemy1.update(); 
-        player.update();//Veränderung der Spielfigur
-        
+        if(State.getState().update() == false) 
+        {
+            if(State.getState() == gameState) State.setState(menuState);
+            else if(State.getState() == menuState) State.setState(gameState);
+        }
     }
 
     /**
@@ -128,12 +113,11 @@ public class Game implements Runnable {
         g = bs.getDrawGraphics();
         //Clear Screen
         g.clearRect(0, 0, screenWidth, screenHeight);
-        level.render(g);//Hintergrund
-        player.render(g);
-        enemy1.render(g);
-        level.renderZ(g);//Vordergrund
+        if(State.getState() != null)
+            State.getState().render(g);
         bs.show();
         g.dispose();
+        State.getState().render(g);
     }
 
     /**
@@ -146,5 +130,10 @@ public class Game implements Runnable {
     public Player getPlayer()
     {
         return player;
+    }
+    
+    public GameState getGameState()
+    {
+        return getGameState();
     }
 }
