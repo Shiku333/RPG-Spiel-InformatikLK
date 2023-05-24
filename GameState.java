@@ -12,14 +12,20 @@ import de.neuromechanics.Player;
 import de.neuromechanics.Screen;
 import de.neuromechanics.SpriteSheet;
 import de.neuromechanics.TileSet;*/
+/**
+ * Version: 2.0
+ * Author: Vinzenz, Max
+ * Quelle: https://quizdroid.wordpress.com/java-rpg-game-programmierung-tutorial-10-state-machine/
+ * Funktion: Das Spiel für den User spielbar zu machen, indem er sich in einem Spiel befindet.
+ */
 public class GameState extends State {
     private Player player;
     private Level level;
-    Screen screen;
-    Camera gameCamera;
+    transient Screen screen;
+    transient Camera gameCamera;
     final static int pixelPerTile = 16;//Anzahl der Pixel
-    BufferStrategy bs;
-    Enemy enemy1; //Das Gegnerobjekt
+    transient BufferStrategy bs;
+    private Enemy enemy1; //Das Gegnerobjekt
     /**
     * Das Spiel wird erstellt und gezeichnet.
     */
@@ -60,7 +66,7 @@ public class GameState extends State {
     @Override
     public boolean update() {
         game.keyManager.update();//Registrierung eines Tastendruckes
-        enemy1.update();
+        enemy1.update();//Bewegung der Gegner
         boolean imSpielBleiben = player.update();//Veränderung der Spielfigur oder das betätigen der Escape Taste
         if(imSpielBleiben == false)
         {
@@ -75,9 +81,9 @@ public class GameState extends State {
     private void saveState() {
         //Player player = ((GameState) State.getState()).getPlayer();
         try {
-            FileOutputStream fos = new FileOutputStream("player.ser");
+            FileOutputStream fos = new FileOutputStream("player.ser");//Eine .ser Datei wird erstellt
             ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(player);
+            oos.writeObject(player);//Das Player Objekt wird eingelesen
             oos.close();
             System.out.println("Player saved!");
         } catch (Exception ex) {
@@ -91,8 +97,8 @@ public class GameState extends State {
     @Override
     public void render(Graphics g) {
         level.render(g);//Hintergrund
-        player.render(g);
-        enemy1.render(g);
+        player.render(g);//Player
+        enemy1.render(g);//Gegner
         level.renderZ(g);//Vordergrund
     }
 
@@ -108,5 +114,10 @@ public class GameState extends State {
 
     public Camera getgamestateCamera(){
         return gameCamera;
+    }
+    
+    public GameState getGameState()
+    {
+        return this;
     }
 }

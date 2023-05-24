@@ -11,7 +11,7 @@ public class Player extends Creature {
     public static final int DEFAULT_SPEED = 3;
     private GameState gamestate;
 
-    private KeyManager keyManager;
+    private transient KeyManager keyManager;
 
     public Player(GameState gamestate, Level level, int x, int y, KeyManager keyManager) {
 
@@ -50,7 +50,6 @@ public class Player extends Creature {
      */
     @Override
     public boolean update() {
-        System.out.println(keyManager);
         move();
         Point p = getInput();
         if(p.x == -99 && p.y == -99) return false; //Falls die Escape-Taste gedrückt wird
@@ -69,5 +68,15 @@ public class Player extends Creature {
     @Override
     public void render(Graphics g) {
         g.drawImage(image, entityXPos - gamestate.getgamestateCamera().getxOffset(), entityYPos - gamestate.getgamestateCamera().getyOffset(), width, height, null);
+    }
+    
+    public void setGameState(GameState gamestate)
+    {
+        this.gamestate = gamestate;
+    }
+    
+    public void setKeyManager(KeyManager keyManager)
+    {
+        this.keyManager = keyManager;
     }
 }

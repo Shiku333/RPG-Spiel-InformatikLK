@@ -7,12 +7,12 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
-public class SpriteSheet {
+public class SpriteSheet implements java.io.Serializable{
     /**
      *  In der Klasse wird ein Spritesheet-Bild eingelesen und in ein zwei-dimensionales Array gespeichert.
      */
-    private BufferedImage sheet;
-    private BufferedImage[][] sprite;
+    private transient BufferedImage sheet;
+    private transient BufferedImage[][] sprite;
 
     public SpriteSheet(String path, int moves, int directions, int width, int height){
         sprite = new BufferedImage[moves][directions]; //Die Argumente "moves" und "directions" geben die Anzahl der

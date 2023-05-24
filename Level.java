@@ -4,12 +4,12 @@
  * Quelle: https://quizdroid.wordpress.com
  */
 import java.awt.Graphics;
-public class Level {
+public class Level implements java.io.Serializable{
     private TileSet[] ts;
     private int sizeX, sizeY;
     private int[][][] tileMap;
     private GameState gamestate;
-    private Game game;
+    private transient Game game;
     public Level(GameState gamestate, Game game, String[] path, TileSet[] ts) {
         this.gamestate = gamestate;
         this.game = game;

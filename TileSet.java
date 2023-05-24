@@ -11,8 +11,8 @@ import javax.imageio.ImageIO;
  * Author: Tim, Johan
  * Quelle: https://quizdroid.wordpress.com
  */
-public class TileSet {
-    private BufferedImage[] tiles;
+public class TileSet implements java.io.Serializable{
+    transient private BufferedImage[] tiles;
     private int sizeX;
     private int sizeY;
     public static int TILEWIDTH, TILEHEIGHT;

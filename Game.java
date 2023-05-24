@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 
 /** 
- * Version: 1.0
+ * Version: 1.1
  * Author: Tim, Johan, Vinzenz
  * Quelle: https://quizdroid.wordpress.com
  */
@@ -134,6 +134,11 @@ public class Game implements Runnable {
     
     public GameState getGameState()
     {
-        return getGameState();
+        return (GameState) gameState;
+    }
+    
+    public KeyManager getKeyManager()
+    {
+        return keyManager;
     }
 }

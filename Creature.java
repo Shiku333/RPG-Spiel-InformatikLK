@@ -1,4 +1,3 @@
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
 /** 
@@ -6,7 +5,7 @@ import java.awt.image.BufferedImage;
  * Author: Tim, Johan
  * Quelle: https://quizdroid.wordpress.com
  */
-public abstract class Creature  {
+public abstract class Creature implements java.io.Serializable{
     /**
      * Sich bewegende Objekte auf dem Spielfeld, die bestimte Gemeinsamkeiten haben. Die Entity Klasse beschreibt
      * alles, was sich auf dem Spielfeld bewegt.
@@ -26,9 +25,8 @@ public abstract class Creature  {
     protected int entityYPos;
     protected int width;
     protected int height;
-    protected BufferedImage image;
+    transient protected BufferedImage image;
 
-    
     public Creature(String name, Level level, SpriteSheet spriteSheet, int x, int y, int width, int height, int health, int speed) {
         this.name = name;
         this.image = image;
@@ -120,11 +118,11 @@ public abstract class Creature  {
         }
         setEntityImage(image);
     }
-    
+
     /**
      * Getter-und Setter Methoden
      */
-    
+
     /**
      * Das Bewegen der Kreatur zu einem bestimmten Punkt
      */
@@ -133,7 +131,6 @@ public abstract class Creature  {
         yMove = p.y;
     }
 
-    
     public int getEntityX() {
         return entityXPos;
     }
@@ -164,5 +161,10 @@ public abstract class Creature  {
 
     public void setHeight(int height) {
         this.height = height;
+    }
+
+    public void setSpriteSheet(SpriteSheet spriteSheet)
+    {
+        this.spriteSheet = spriteSheet;
     }
 }

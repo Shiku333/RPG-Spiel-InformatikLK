@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
  * Author: Tim, Vinzenz
  * Quelle: https://quizdroid.wordpress.com
  */
-public abstract class Entity {
+public abstract class Entity implements java.io.Serializable{
     /**
      * Die gesamte Klasse dient nur als spezifikation, da bestimmte Eigenschaften bei allen Objekten auf dem 
      * Spielfeld gleich sind. Die Spezialisierungen werden dann in Form von Subklassen dargestellt.
@@ -20,7 +20,7 @@ public abstract class Entity {
     protected int entityY;
     protected int width;
     protected int height;
-    protected BufferedImage image;
+    protected transient BufferedImage image;
     
     public Entity(String name, BufferedImage image, int x, int y, int width, int height) {
         this.name = name;
